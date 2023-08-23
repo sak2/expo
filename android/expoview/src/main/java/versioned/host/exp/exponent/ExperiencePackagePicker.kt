@@ -48,7 +48,6 @@ import expo.modules.medialibrary.MediaLibraryModule
 import expo.modules.navigationbar.NavigationBarPackage
 import expo.modules.network.NetworkModule
 import expo.modules.notifications.NotificationsPackage
-import expo.modules.permissions.PermissionsPackage
 import expo.modules.random.RandomModule
 import expo.modules.screencapture.ScreenCaptureModule
 import expo.modules.screenorientation.ScreenOrientationModule
@@ -92,7 +91,6 @@ object ExperiencePackagePicker : ModulesProvider {
     LocationPackage(),
     NavigationBarPackage(),
     NotificationsPackage(),
-    PermissionsPackage(),
     SensorsPackage(),
     SplashScreenPackage(),
     SystemUIPackage(),
