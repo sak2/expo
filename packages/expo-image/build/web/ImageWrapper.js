@@ -3,7 +3,7 @@ import ColorTintFilter, { getTintColorStyle } from './ColorTintFilter';
 import { getImageWrapperEventHandler } from './getImageWrapperEventHandler';
 import { absoluteFilledPosition, getObjectPositionFromContentPositionObject } from './positioning';
 import { useBlurhash } from '../utils/blurhash/useBlurhash';
-import { isThumbhashString } from '../utils/resolveSources';
+import { isBlurhashString, isThumbhashString } from '../utils/resolveSources';
 import { thumbHashStringToDataURL } from '../utils/thumbhash/thumbhash';
 function getFetchPriorityFromImagePriority(priority = 'normal') {
     return priority && ['low', 'high'].includes(priority) ? priority : 'auto';
@@ -26,9 +26,10 @@ function useThumbhash(source) {
 function useImageHashes(source) {
     const thumbhash = useThumbhash(source);
     const blurhash = useBlurhash(source);
+    const isImageHash = isBlurhashString(source?.uri || '') || isThumbhashString(source?.uri || '');
     return useMemo(() => ({
-        resolvedSource: blurhash ?? thumbhash ?? source,
-        isImageHash: !!blurhash || !!thumbhash,
+        resolvedSource: isImageHash ? blurhash ?? thumbhash ?? null : source,
+        isImageHash,
     }), [blurhash, thumbhash]);
 }
 function useHeaders(source, cachePolicy, onError) {
@@ -89,8 +90,8 @@ const ImageWrapper = React.forwardRef(({ source, events, contentPosition, hashPl
                 objectPosition,
                 ...absoluteFilledPosition,
                 ...getTintColorStyle(tintColor),
-                ...(isImageHash ? hashPlaceholderStyle : {}),
                 ...style,
+                ...(isImageHash ? hashPlaceholderStyle : {}),
             }, 
             // @ts-ignore
             // eslint-disable-next-line react/no-unknown-property
