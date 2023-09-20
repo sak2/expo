@@ -53,8 +53,10 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSCalendarsUsageDescription</key>
+	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>Allow bare-expo to access your calendar</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>Allow bare-expo to access your reminders</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow bare-expo to use the camera</string>
 	<key>NSContactsUsageDescription</key>
@@ -75,8 +77,6 @@
 	<string>Give bare-expo periences permission to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Give bare-expo periences permission to access your photos</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Allow bare-expo to access your reminders</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>Allow Expo projects to use data for tracking the user or the device</string>
 	<key>UIBackgroundModes</key>
